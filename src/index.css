@@ -1,0 +1,24 @@
+/* import colors.css */
+@import url('./colors.css');
+
+:root {
+  --background--color: var(--dark4);
+  --text-color: var(--light2);
+  --primary-color: var(--blue3);
+  --button-color: var(--dark3);
+  --button-hover-color: var(--dark2);
+  --button-icon-color: var(--light2);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  background-color: var(--background--color);
+  height: 100%;
+}

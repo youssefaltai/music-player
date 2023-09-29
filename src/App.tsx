@@ -1,8 +1,14 @@
+import AppStyle from "./App.style";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer";
+import { MusicPlayerProvider } from "./contexts/MusicPlayerContext";
 
 function App() {
   return (
-    <MusicPlayer />
+    <AppStyle>
+      <MusicPlayerProvider>
+        <MusicPlayer />
+      </MusicPlayerProvider>
+    </AppStyle>
   );
 }
 
