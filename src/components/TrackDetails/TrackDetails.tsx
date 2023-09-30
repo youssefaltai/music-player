@@ -7,9 +7,7 @@ const TrackDetails = () => {
   const { currentTrack } = useMusicPlayer();
 
   if (!currentTrack) {
-    return (
-      <div>No track selected</div>
-    );
+    return (<></>);
   }
 
   return (

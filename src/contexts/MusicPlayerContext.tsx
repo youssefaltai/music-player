@@ -10,6 +10,7 @@ type Track = {
   title: string;
   artist: string;
   src: string;
+  albumCover: string;
 }
 
 type CurrentTrackIndex = number | undefined;
@@ -21,16 +22,109 @@ export const dummyPlaylist: Track[] = [
     title: "Song 1",
     artist: "Artist 1",
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    albumCover: "https://picsum.photos/250",
   },
   {
     title: "Song 2",
     artist: "Artist 2",
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    albumCover: "https://picsum.photos/251",
   },
   {
     title: "Song 3",
     artist: "Artist 3",
     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    albumCover: "https://picsum.photos/252",
+  },
+  {
+    title: "Song 1",
+    artist: "Artist 1",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    albumCover: "https://picsum.photos/250",
+  },
+  {
+    title: "Song 2",
+    artist: "Artist 2",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    albumCover: "https://picsum.photos/251",
+  },
+  {
+    title: "Song 3",
+    artist: "Artist 3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    albumCover: "https://picsum.photos/252",
+  },
+  {
+    title: "Song 1",
+    artist: "Artist 1",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    albumCover: "https://picsum.photos/250",
+  },
+  {
+    title: "Song 2",
+    artist: "Artist 2",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    albumCover: "https://picsum.photos/251",
+  },
+  {
+    title: "Song 3",
+    artist: "Artist 3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    albumCover: "https://picsum.photos/252",
+  },
+  {
+    title: "Song 1",
+    artist: "Artist 1",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    albumCover: "https://picsum.photos/250",
+  },
+  {
+    title: "Song 2",
+    artist: "Artist 2",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    albumCover: "https://picsum.photos/251",
+  },
+  {
+    title: "Song 3",
+    artist: "Artist 3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    albumCover: "https://picsum.photos/252",
+  },
+  {
+    title: "Song 1",
+    artist: "Artist 1",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    albumCover: "https://picsum.photos/250",
+  },
+  {
+    title: "Song 2",
+    artist: "Artist 2",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    albumCover: "https://picsum.photos/251",
+  },
+  {
+    title: "Song 3",
+    artist: "Artist 3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    albumCover: "https://picsum.photos/252",
+  },
+  {
+    title: "Song 1",
+    artist: "Artist 1",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    albumCover: "https://picsum.photos/250",
+  },
+  {
+    title: "Song 2",
+    artist: "Artist 2",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    albumCover: "https://picsum.photos/251",
+  },
+  {
+    title: "Song 3",
+    artist: "Artist 3",
+    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    albumCover: "https://picsum.photos/252",
   },
 ];
 
@@ -39,7 +133,7 @@ type MusicPlayerContextType = {
   currentTrackIndex: CurrentTrackIndex;
   setCurrentTrackIndex: React.Dispatch<React.SetStateAction<CurrentTrackIndex>>;
   playlist: Track[];
-  setPlaylist: (playlist: Track[]) => void;
+  setPlaylist: React.Dispatch<React.SetStateAction<Track[]>>;
   play: () => void;
   pause: () => void;
   togglePlayPause: () => void;
@@ -60,9 +154,16 @@ export const MusicPlayerProvider = ({ children }: PropsWithChildren) => {
   const [percentage, setPercentage] = useState(0);
 
   useEffect(() => {
-    const fn = () => setPercentage((audio.currentTime / audio.duration) * 100);
-    audio.addEventListener("timeupdate", fn);
-    return () => audio.removeEventListener("timeupdate", fn);
+    setPlaylist((_) => dummyPlaylist);
+  }, []);
+
+  useEffect(() => {
+    const onTimeUpdate = () => setPercentage((audio.currentTime / audio.duration) * 100);
+    audio.addEventListener("timeupdate", onTimeUpdate);
+
+    return () => {
+      audio.removeEventListener("timeupdate", onTimeUpdate);
+    }
   }, []);
 
   useEffect(() => {
@@ -133,11 +234,11 @@ export const MusicPlayerProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     if (!canPlay()) return;
     // console.log("useEffect currentTrackIndex");
-    audio.pause();
     audio.src = playlist[currentTrackIndex!].src;
-    setPercentage(0);
     audio.load();
+    setPercentage(0);
     audio.play();
+    setPaused(false);
   }, [currentTrackIndex]);
 
   const currentTrack = canPlay() ? playlist[currentTrackIndex!] : undefined;

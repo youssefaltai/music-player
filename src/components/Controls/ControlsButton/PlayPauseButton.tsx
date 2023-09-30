@@ -8,7 +8,9 @@ const PlayPauseButton = () => {
   return (
     <ControlsButton
       variant="primary"
-      onClick={togglePlayPause}
+      onClick={() => {
+        togglePlayPause();
+      }}
     >
       {!paused ? <PauseButtonSvg /> : <PlayButtonSvg />}
     </ControlsButton>
