@@ -6,7 +6,7 @@ import {
   useState
 } from "react";
 
-type Track = {
+export type Track = {
   title: string;
   artist: string;
   src: string;
@@ -17,116 +17,116 @@ type CurrentTrackIndex = number | undefined;
 type CurrentTrack = Track | undefined;
 
 
-export const dummyPlaylist: Track[] = [
-  {
-    title: "Song 1",
-    artist: "Artist 1",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    albumCover: "https://picsum.photos/250",
-  },
-  {
-    title: "Song 2",
-    artist: "Artist 2",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    albumCover: "https://picsum.photos/251",
-  },
-  {
-    title: "Song 3",
-    artist: "Artist 3",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    albumCover: "https://picsum.photos/252",
-  },
-  {
-    title: "Song 1",
-    artist: "Artist 1",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    albumCover: "https://picsum.photos/250",
-  },
-  {
-    title: "Song 2",
-    artist: "Artist 2",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    albumCover: "https://picsum.photos/251",
-  },
-  {
-    title: "Song 3",
-    artist: "Artist 3",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    albumCover: "https://picsum.photos/252",
-  },
-  {
-    title: "Song 1",
-    artist: "Artist 1",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    albumCover: "https://picsum.photos/250",
-  },
-  {
-    title: "Song 2",
-    artist: "Artist 2",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    albumCover: "https://picsum.photos/251",
-  },
-  {
-    title: "Song 3",
-    artist: "Artist 3",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    albumCover: "https://picsum.photos/252",
-  },
-  {
-    title: "Song 1",
-    artist: "Artist 1",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    albumCover: "https://picsum.photos/250",
-  },
-  {
-    title: "Song 2",
-    artist: "Artist 2",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    albumCover: "https://picsum.photos/251",
-  },
-  {
-    title: "Song 3",
-    artist: "Artist 3",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    albumCover: "https://picsum.photos/252",
-  },
-  {
-    title: "Song 1",
-    artist: "Artist 1",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    albumCover: "https://picsum.photos/250",
-  },
-  {
-    title: "Song 2",
-    artist: "Artist 2",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    albumCover: "https://picsum.photos/251",
-  },
-  {
-    title: "Song 3",
-    artist: "Artist 3",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    albumCover: "https://picsum.photos/252",
-  },
-  {
-    title: "Song 1",
-    artist: "Artist 1",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-    albumCover: "https://picsum.photos/250",
-  },
-  {
-    title: "Song 2",
-    artist: "Artist 2",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-    albumCover: "https://picsum.photos/251",
-  },
-  {
-    title: "Song 3",
-    artist: "Artist 3",
-    src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-    albumCover: "https://picsum.photos/252",
-  },
-];
+// export const dummyPlaylist: Track[] = [
+//   {
+//     title: "Song 1",
+//     artist: "Artist 1",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+//     albumCover: "https://picsum.photos/250",
+//   },
+//   {
+//     title: "Song 2",
+//     artist: "Artist 2",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+//     albumCover: "https://picsum.photos/251",
+//   },
+//   {
+//     title: "Song 3",
+//     artist: "Artist 3",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+//     albumCover: "https://picsum.photos/252",
+//   },
+//   {
+//     title: "Song 1",
+//     artist: "Artist 1",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+//     albumCover: "https://picsum.photos/250",
+//   },
+//   {
+//     title: "Song 2",
+//     artist: "Artist 2",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+//     albumCover: "https://picsum.photos/251",
+//   },
+//   {
+//     title: "Song 3",
+//     artist: "Artist 3",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+//     albumCover: "https://picsum.photos/252",
+//   },
+//   {
+//     title: "Song 1",
+//     artist: "Artist 1",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+//     albumCover: "https://picsum.photos/250",
+//   },
+//   {
+//     title: "Song 2",
+//     artist: "Artist 2",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+//     albumCover: "https://picsum.photos/251",
+//   },
+//   {
+//     title: "Song 3",
+//     artist: "Artist 3",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+//     albumCover: "https://picsum.photos/252",
+//   },
+//   {
+//     title: "Song 1",
+//     artist: "Artist 1",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+//     albumCover: "https://picsum.photos/250",
+//   },
+//   {
+//     title: "Song 2",
+//     artist: "Artist 2",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+//     albumCover: "https://picsum.photos/251",
+//   },
+//   {
+//     title: "Song 3",
+//     artist: "Artist 3",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+//     albumCover: "https://picsum.photos/252",
+//   },
+//   {
+//     title: "Song 1",
+//     artist: "Artist 1",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+//     albumCover: "https://picsum.photos/250",
+//   },
+//   {
+//     title: "Song 2",
+//     artist: "Artist 2",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+//     albumCover: "https://picsum.photos/251",
+//   },
+//   {
+//     title: "Song 3",
+//     artist: "Artist 3",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+//     albumCover: "https://picsum.photos/252",
+//   },
+//   {
+//     title: "Song 1",
+//     artist: "Artist 1",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+//     albumCover: "https://picsum.photos/250",
+//   },
+//   {
+//     title: "Song 2",
+//     artist: "Artist 2",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+//     albumCover: "https://picsum.photos/251",
+//   },
+//   {
+//     title: "Song 3",
+//     artist: "Artist 3",
+//     src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+//     albumCover: "https://picsum.photos/252",
+//   },
+// ];
 
 type MusicPlayerContextType = {
   currentTrack: CurrentTrack;
@@ -152,10 +152,6 @@ export const MusicPlayerProvider = ({ children }: PropsWithChildren) => {
   const [audio] = useState(new Audio());
   const [paused, setPaused] = useState(true);
   const [percentage, setPercentage] = useState(0);
-
-  useEffect(() => {
-    setPlaylist((_) => dummyPlaylist);
-  }, []);
 
   useEffect(() => {
     const onTimeUpdate = () => setPercentage((audio.currentTime / audio.duration) * 100);

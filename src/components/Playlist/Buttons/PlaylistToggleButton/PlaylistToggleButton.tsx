@@ -1,4 +1,4 @@
-import MenuSvg from "./MenuSvg";
+import MenuSvg from "../MenuSvg";
 import PlaylistToggleButtonStyle from "./PlaylistToggleButton.style";
 
 type PlaylistToggleButtonProps = {

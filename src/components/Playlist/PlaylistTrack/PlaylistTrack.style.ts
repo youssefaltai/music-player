@@ -12,6 +12,7 @@ const PlaylistTrackStyle = styled.div<PlaylistTrackStyleProps>`
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
+  min-height: 78px;
   padding: 14px 10px;
   border-radius: 8px;
 
@@ -22,6 +23,10 @@ const PlaylistTrackStyle = styled.div<PlaylistTrackStyleProps>`
     background-color: var(--dark2);
     cursor: pointer;
   }
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export default PlaylistTrackStyle;

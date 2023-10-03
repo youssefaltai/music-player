@@ -5,9 +5,9 @@ type PlaylistStyleProps = {
 };
 
 const PlaylistStyle = styled.div<PlaylistStyleProps>`
+  height: 100%;
   width: ${({ $collapsed }) => ($collapsed ? "0px" : "50%")};
   margin-left: ${({ $collapsed }) => (!$collapsed ? "0px" : "-16px")};
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -18,7 +18,11 @@ const PlaylistStyle = styled.div<PlaylistStyleProps>`
   padding: 8px;
 
   background-color: var(--dark5);
-  overflow-x: hidden;
+  color: var(--text-color);
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   overflow-y: scroll;
 
   transition: width 0.3s ease-in-out, margin-left 0.3s ease-in-out;

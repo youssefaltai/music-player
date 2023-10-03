@@ -5,6 +5,10 @@ const PlaylistTrackTitleStyle = styled.div`
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 4px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export default PlaylistTrackTitleStyle;

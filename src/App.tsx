@@ -5,12 +5,12 @@ import { MusicPlayerProvider } from "./contexts/MusicPlayerContext";
 
 function App() {
   return (
-    <AppStyle>
-      <MusicPlayerProvider>
+    <MusicPlayerProvider>
+      <AppStyle>
         <Playlist />
         <MusicPlayer />
-      </MusicPlayerProvider>
-    </AppStyle>
+      </AppStyle>
+    </MusicPlayerProvider>
   );
 }
 
